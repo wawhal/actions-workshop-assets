@@ -1,0 +1,96 @@
+- array_relationships:
+  - name: orders
+    using:
+      foreign_key_constraint_on:
+        column: address_id
+        table:
+          name: orders
+          schema: public
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  table:
+    name: addresses
+    schema: public
+- object_relationships:
+  - name: cart
+    using:
+      foreign_key_constraint_on: cart_id
+  - name: item
+    using:
+      foreign_key_constraint_on: item_id
+  table:
+    name: cart_items
+    schema: public
+- array_relationships:
+  - name: cart_items
+    using:
+      foreign_key_constraint_on:
+        column: cart_id
+        table:
+          name: cart_items
+          schema: public
+  - name: orders
+    using:
+      foreign_key_constraint_on:
+        column: cart_id
+        table:
+          name: orders
+          schema: public
+  object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  table:
+    name: carts
+    schema: public
+- array_relationships:
+  - name: cart_items
+    using:
+      foreign_key_constraint_on:
+        column: item_id
+        table:
+          name: cart_items
+          schema: public
+  table:
+    name: items
+    schema: public
+- object_relationships:
+  - name: address
+    using:
+      foreign_key_constraint_on: address_id
+  - name: cart
+    using:
+      foreign_key_constraint_on: cart_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+  table:
+    name: orders
+    schema: public
+- array_relationships:
+  - name: addresses
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: addresses
+          schema: public
+  - name: carts
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: carts
+          schema: public
+  - name: orders
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: orders
+          schema: public
+  table:
+    name: users
+    schema: public
